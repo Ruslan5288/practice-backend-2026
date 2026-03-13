@@ -1,16 +1,28 @@
-from pydantic import BaseModel, EmailStr, ConfigDict
+from pydantic import BaseModel, ConfigDict
+from datetime import datetime
+from typing import List
 
 class UserCreate(BaseModel):
-    email: EmailStr
+    email: str
     password: str
 
 class UserOut(BaseModel):
     id: int
-    email: EmailStr
+    email: str
     model_config = ConfigDict(from_attributes=True)
 
 class ResourceOut(BaseModel):
     id: int
     name: str
     description: str
+    model_config = ConfigDict(from_attributes=True)
+
+class BookingCreate(BaseModel):
+    resource_id: int
+
+class BookingOut(BaseModel):
+    id: int
+    user_id: int
+    resource_id: int
+    start_time: datetime
     model_config = ConfigDict(from_attributes=True)
