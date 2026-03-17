@@ -19,10 +19,13 @@ class ResourceOut(BaseModel):
 
 class BookingCreate(BaseModel):
     resource_id: int
+    start_time: datetime
+    end_time: datetime
 
 class BookingOut(BaseModel):
     id: int
     user_id: int
     resource_id: int
     start_time: datetime
+    end_time: datetime
     model_config = ConfigDict(from_attributes=True)
